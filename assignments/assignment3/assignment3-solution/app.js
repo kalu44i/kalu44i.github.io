@@ -15,13 +15,15 @@
 			var promice= MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
 			promice.then(function(result) {
 				ctrl.foundItems = result;
-				console.log("ctrl.foundItems = ", ctrl.foundItems.length);
+				ctrl.title = ctrl.foundItems.length !== 0 ? "Founded items " + ctrl.foundItems.length : "";
 			})
 		};
 		
 		ctrl.removeItem = function(index) {
 			ctrl.foundItems.splice(index, 1);
 		};
+
+
 
 	};
 
@@ -38,7 +40,7 @@
     			var items = response.data.menu_items;
     			var foundItems = [];
     			items.forEach(function(item) {
-    				if (item.description.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
+    				if (searchTerm && item.description.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
     					foundItems.push(item);
     				}
     			});
