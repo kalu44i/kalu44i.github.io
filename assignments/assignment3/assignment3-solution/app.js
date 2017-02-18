@@ -37,11 +37,11 @@
 			}).then(function (response) {
     			var items = response.data.menu_items;
     			var foundItems = [];
-    			for (var i = 0; i < items.length; i++) {
-    				if (items[i].description.indexOf(searchTerm) !== -1) {
-    					foundItems.push(items[i]);
+    			items.forEach(function(item) {
+    				if (item.description.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
+    					foundItems.push(item);
     				}
-    			}
+    			});
     			return foundItems;
   			})
   			.catch(function (error) {
@@ -52,13 +52,13 @@
 
 	};
 
-
 	function FoundItems() {
 		return {
 			replace: true,
 			restrict: "E",
 			templateUrl: "result.html",
 			scope: {
+				myTitle: "@title",
 				foundItems: "<",
 				onRemove: "&"
 			},
