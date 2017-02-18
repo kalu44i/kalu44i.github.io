@@ -1,0 +1,10 @@
+<div style="display: inline-block">
+<ul>
+	<li ng-repeat="item in ctrl.foundItems">
+		<h4>{{item.name}}</h4>
+		<h6>{{item.description}}</h6>
+		<h5>Small: {{item.price_small}}, Large: {{item.price_large}}</h5>
+		<button type="button" class="btn btn-warning" ng-click="ctrl.onRemove({index: $index})">Don't want this one!</button>
+	</li>
+</ul>
+</div>
